@@ -38,6 +38,9 @@ coverage:
 deps:
 	. venv/bin/activate; python -m pip install -r requirements.txt
 
+docker_install: clean
+	python setup.py install
+
 install: clean venv deps
 	. venv/bin/activate; python setup.py install
 

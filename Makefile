@@ -24,6 +24,9 @@ clean:
 	find . -type d -name '__pycache__' | xargs rm -rf
 	find . -name "*.pyc" -type f -print0 | xargs -0 /bin/rm -rf
 
+clear:
+	rm ./tmp/*
+
 compile:
 	. venv/bin/activate; python setup.py build install
 

@@ -1,0 +1,16 @@
+__pycache__/
+__pycache__/**/__pycache__/
+
+build/
+dist/
+htmlcov/
+crypto_analyze.egg-info/
+tmp/
+venv/
+
+.cache/
+.coverage
+.eggs/
+.idea/
+.tox/
+*.pyc

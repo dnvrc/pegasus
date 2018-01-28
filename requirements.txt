@@ -1,0 +1,7 @@
+dotmap==1.2.20
+plotly
+python-json-logger==0.1.7
+quandl
+requests[security]
+restapi-logging-handler==0.2.2
+tox==2.6.0

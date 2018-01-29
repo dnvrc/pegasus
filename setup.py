@@ -14,6 +14,8 @@ setup(
     packages=find_packages(exclude=['tests']),
     install_requires=[
         'dotmap==1.2.20',
+        'jupyter==1.0.0',
+        'ipython==6.1.0',
         'plotly==2.3.0',
         'python-json-logger==0.1.7',
         'quandl==3.3.0',

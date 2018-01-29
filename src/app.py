@@ -12,6 +12,9 @@ from src.utilities import APPROVED_COLUMNS as AC
 
 from src.config import Config
 
+from IPython import embed
+
+
 def correlation_heatmap(df, title, absolute_bounds=True):
     heatmap = go.Heatmap(
         z=df.corr(method='pearson').as_matrix(),
@@ -55,10 +58,3 @@ combined_df_2016.pct_change().corr(method='pearson')
 
 combined_df_2017 = pusd_datasets[pusd_datasets.index.year == 2017]
 combined_df_2017.pct_change().corr(method='pearson')
-
-
-print(combined_df_2016)
-
-
-
-# print(pusd_datasets.tail())

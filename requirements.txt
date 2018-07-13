@@ -1,22 +1,12 @@
 # Main
 
-jupyter==1.0.0
+enigma-catalyst
+pandas
+# jupyter==1.0.0
 
 dotmap==1.2.20
-ipython==6.1.0
+matplotlib
 plotly==2.3.0
-python-json-logger==0.1.7
+python-json-logger
 quandl==3.3.0
 requests[security]==2.18.4
-restapi-logging-handler==0.2.2
-tox==2.6.0
-urllib3==1.22
-
-# Test
-coverage==4.4.1
-flake8==3.3.0
-minimock==1.2.8
-mock==2.0.0
-pytest==3.2.1
-responses==0.5.1
-tox==2.6.0

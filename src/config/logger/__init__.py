@@ -3,7 +3,6 @@ import time
 import logging
 
 from pythonjsonlogger import jsonlogger
-from restapi_logging_handler import LogglyHandler
 
 JSON_FORMAT = '%(asctime)s %(filename)s %(name)s %(levelname)s %(message)s'
 STAD_FORMAT = '%(asctime)s - %(filename)s - %(name)s - %(levelname)s - %(message)s'

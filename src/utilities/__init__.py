@@ -31,3 +31,21 @@ class Helper(object):
     @classmethod
     def approved_column_names(self, name):
         return APPROVED_COLUMNS[name]
+
+    @classmethod
+    def correlation_heatmap(df, title, absolute_bounds=True):
+        heatmap = go.Heatmap(
+            z=df.corr(method='pearson').as_matrix(),
+            x=df.columns,
+            y=df.columns,
+            colorbar=dict(title='Pearson Coefficient'),
+        )
+
+        layout = go.Layout(title=title)
+
+        if absolute_bounds:
+            heatmap['zmax'] = 1.0
+            heatmap['zmin'] = -1.0
+
+        fig = go.Figure(data=[heatmap], layout=layout)
+        py.iplot(fig)

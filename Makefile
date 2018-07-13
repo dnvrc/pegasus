@@ -34,7 +34,7 @@ console:
 	. venv/bin/activate; python
 
 coverage:
-	. venv/bin/activate; coverage run --source cybric setup.py test
+	. venv/bin/activate; coverage run --source src setup.py test
 	. venv/bin/activate; coverage html
 	. venv/bin/activate; coverage report
 
@@ -47,16 +47,19 @@ docker_install: clean
 install: clean venv deps
 	. venv/bin/activate; python setup.py install
 
-launch:
+s1:
 	. venv/bin/activate; python src/app.py
+
+s2:
+	. venv/bin/activate; python src/corr.py
 
 lint:
 	. venv/bin/activate; pip install flake8==3.3.0
-	. venv/bin/activate; python -m flake8 --ignore=F401,E501,E731 cybric/
+	. venv/bin/activate; python -m flake8 --ignore=F401,E501,E731 src/
 
 test_local:
 	. venv/bin/activate; pip install pytest==3.2.3 pytest-cov==2.5.1 responses==0.5.1 minimock==1.2.8 mock==2.0.0
-	. venv/bin/activate; py.test --cov=cybric tests -r w --disable-pytest-warnings
+	. venv/bin/activate; py.test --cov=src tests -r w --disable-pytest-warnings
 
 test:
 	. venv/bin/activate; python setup.py test

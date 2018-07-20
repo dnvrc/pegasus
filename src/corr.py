@@ -29,14 +29,15 @@ if __name__ == '__main__':
     ]
 
     frame = {}
-    stats = {}
-    years = [2018, 2017, 2016, 2015, 2014, 2013]
+    years = [2018, 2017,] #2016, 2015, 2014, 2013]
 
     for year in years:
         config.logger.info(f'processing year {year}')
 
-        frame[year] = {}
-        stats[year] = {}
+        frame[year] = {
+            'frame': {},
+            'stats': {},
+        }
 
         for indx, coin in enumerate(coins):
             slug, symb = coin.get('slug', None), coin.get('symbol', None)
@@ -51,18 +52,22 @@ if __name__ == '__main__':
             if pusd.empty:
                 continue
 
-            frame[year][symb] = pusd
-            stats[year][symb] = {}
+            frame[year]['frame'][symb] = pusd
+            frame[year]['stats'][symb] = {}
 
-            stats[year][symb]['cov'] = '%.5E' % Decimal(np.cov(pusd).tolist())
-            stats[year][symb]['var'] = '%.5E' % Decimal(np.var(pusd))
-            stats[year][symb]['std'] = np.std(pusd)
-            stats[year][symb]['mean'] = np.average(pusd)
-            stats[year][symb]['median'] = np.median(pusd)
-            stats[year][symb]['mode'] = scy.mode(pusd)[0][0]
+            frame[year]['stats'][symb]['cov'] = '%.5E' % Decimal(np.cov(pusd).tolist())
+            frame[year]['stats'][symb]['var'] = '%.5E' % Decimal(np.var(pusd))
+            frame[year]['stats'][symb]['std'] = np.std(pusd)
+            frame[year]['stats'][symb]['mean'] = np.average(pusd)
+            frame[year]['stats'][symb]['median'] = np.median(pusd)
+            frame[year]['stats'][symb]['mode'] = scy.mode(pusd)[0][0]
 
-        frame[year] = pd.DataFrame(frame[year])
-        stats[year] = pd.DataFrame(stats[year])
+        frame[year]['frame'] = pd.DataFrame(frame[year]['frame'])
+        frame[year]['frame'].index.name = f'{year} prices'
+
+        frame[year]['stats'] = pd.DataFrame(frame[year]['stats'])
+        frame[year]['stats'].index.name = f'{year} stats'
+
 
 
     # frame = pd.DataFrame(frame)
@@ -71,7 +76,7 @@ if __name__ == '__main__':
     # corr = frame.corr()
 
 
-
+    embed()
 
 
     #

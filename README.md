@@ -1,3 +1,3 @@
 # Introduction
 
-The pegasus platform is used for complete crypto-currency analysis. 
+The pegasus platform is used for price correlation on crypto-currency coins and tokens. 

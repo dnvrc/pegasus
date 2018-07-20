@@ -1,14 +1,13 @@
 # Main
 
-enigma-catalyst
-ipython
-pandas
-openpyxl
-scipy
+enigma-catalyst==0.5.17
+ipython==6.4.0
+pandas==0.23.3
+openpyxl==2.5.4
+scipy==1.1.0
 
 dotmap==1.2.20
-matplotlib
+matplotlib==2.2.2
 plotly==2.3.0
-python-json-logger
 quandl==3.3.0
 requests[security]==2.18.4

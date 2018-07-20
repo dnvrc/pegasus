@@ -88,12 +88,7 @@ if __name__ == '__main__':
         stat.to_excel(wr, sheet_name=f'{year}', startrow=(len(coins) + 2))
         main.to_excel(wr, sheet_name=f'{year}', startrow=(len(coins) * 2) + 2)
 
-
     wr.save()
-    # frame = pd.DataFrame(frame)
-    # stats = pd.DataFrame(stats)
-    #
-    # corr = frame.corr()
 
 
     #

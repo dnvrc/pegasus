@@ -1,22 +1,21 @@
 .PHONY: docs test
 
-VIRTUALENV = $(shell which virtualenv)
+	VIRTUALENV = $(shell which virtualenv)
+	PYTHONEXEC = python3.6
+	DOCKER_VOL = '/var/run/docker.sock:/var/run/docker.sock'
+	PIMAGENAME = 'amanelis/crypto-anaylze:public'
+	DIMAGENAME = 'amanelis/crypto-anaylze:latest'
 
-help:
-	@echo "  clean       remove unwanted files like .pyc's"
-	@echo "  compile     runs the environments setup.py build install"
-	@echo "  console     runs an interactive python console with current environment"
-	@echo "  coverage    runs the tests and determines amount of code that is covered in the tests"
-	@echo "  deps        install dependencies using pip"
-	@echo "  install 		 installs the environment"
-	@echo "  lint        check style with flake8"
-	@echo "  test        run all your tests using py.test"
-	@echo "  venv        returns the python environment being used"
+bandit:
+	. venv/bin/activate; pip install bandit==1.0.1
+	. venv/bin/activate; bandit -r src/
 
 clean:
-	rm -rf *.egg-info/
-	rm -rf .cache/
 	rm .coverage || true
+	rm -rf .cache
+	rm -rf .eggs
+	rm -rf .tox
+	rm -rf *.egg-info/
 	rm -rf build
 	rm -rf dist
 	rm -rf htmlcov

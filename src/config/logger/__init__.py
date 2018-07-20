@@ -2,13 +2,8 @@ import sys
 import time
 import logging
 
-from pythonjsonlogger import jsonlogger
 
-JSON_FORMAT = '%(asctime)s %(filename)s %(name)s %(levelname)s %(message)s'
-STAD_FORMAT = '%(asctime)s - %(filename)s - %(name)s - %(levelname)s - %(message)s'
-
-
-def Logger(config, handler=None, level=None, disabled=False):
+def Logger(config, handler=None, level=None):
     identifier = None
 
     if hasattr(config, 'service_instance'):
@@ -31,12 +26,7 @@ def Logger(config, handler=None, level=None, disabled=False):
     # Clear any hanging/zombie handlers
     log.handlers = []
 
-    if disabled:
-        defaultHandler.setFormatter(logging.Formatter(STAD_FORMAT))
-        log.addHandler(defaultHandler)
-        return log
-
-    defaultHandler.setFormatter(jsonlogger.JsonFormatter(JSON_FORMAT))
+    defaultHandler.setFormatter(logging.Formatter('%(asctime)s %(filename)s %(name)s %(levelname)s %(message)s'))
     log.addHandler(defaultHandler)
 
     return log

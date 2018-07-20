@@ -1,8 +1,10 @@
 # Main
 
 enigma-catalyst
+ipython
 pandas
-# jupyter==1.0.0
+openpyxl
+scipy
 
 dotmap==1.2.20
 matplotlib

@@ -40,3 +40,7 @@ if __name__ == '__main__':
     combined_df_2017 = pusd_datasets[pusd_datasets.index.year == 2017]
     combined_df_2017.pct_change().corr(method='pearson')
     print(combined_df_2017.tail())
+
+    combined_df_2018 = pusd_datasets[pusd_datasets.index.year == 2018]
+    combined_df_2018.pct_change().corr(method='pearson')
+    print(combined_df_2018.tail())

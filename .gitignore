@@ -4,7 +4,7 @@ __pycache__/**/__pycache__/
 build/
 dist/
 htmlcov/
-crypto_analyze.egg-info/
+*.egg-info/
 tmp/
 venv/
 

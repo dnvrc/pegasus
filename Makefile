@@ -23,14 +23,14 @@ clean:
 	find . -type d -name '__pycache__' | xargs rm -rf
 	find . -name "*.pyc" -type f -print0 | xargs -0 /bin/rm -rf
 
-clear:
-	rm ./tmp/*
-
 compile:
 	. venv/bin/activate; $(PYTHONEXEC) setup.py build install
 
 console:
 	. venv/bin/activate; $(PYTHONEXEC)
+
+corr_0725:
+	. venv/bin/activate; $(PYTHONEXEC) src/models/corr_0725/__init__.py
 
 coverage:
 	. venv/bin/activate; coverage run --source src setup.py test
@@ -46,25 +46,9 @@ docker_install: clean
 install: clean venv deps
 	. venv/bin/activate; $(PYTHONEXEC) setup.py install
 
-pversion:
-	. venv/bin/activate; $(PYTHONEXEC) --version
-
-s1:
-	. venv/bin/activate; $(PYTHONEXEC) src/app.py
-
-s2:
-	. venv/bin/activate; $(PYTHONEXEC) src/corr.py
-
-corr_0725:
-	. venv/bin/activate; $(PYTHONEXEC) src/models/corr_0725/__init__.py
-
 lint:
 	. venv/bin/activate; pip install flake8==3.3.0
 	. venv/bin/activate; $(PYTHONEXEC) -m flake8 --ignore=F401,E501,E731 src/
-
-test_local:
-	. venv/bin/activate; pip install pytest==3.2.3 pytest-cov==2.5.1 responses==0.5.1 minimock==1.2.8 mock==2.0.0
-	. venv/bin/activate; py.test --cov=src tests -r w --disable-pytest-warnings
 
 test:
 	. venv/bin/activate; $(PYTHONEXEC) setup.py test

@@ -65,5 +65,6 @@ class Helper(object):
         au_corr = df.corr().abs().unstack()
         labels_to_drop = self.get_redundant_pairs(df)
         au_corr = au_corr.drop(labels=labels_to_drop).sort_values(ascending=a)
+        au_corr.name = df.index.name
 
         return au_corr[0:n]

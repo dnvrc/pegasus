@@ -55,6 +55,9 @@ s1:
 s2:
 	. venv/bin/activate; $(PYTHONEXEC) src/corr.py
 
+corr_0725:
+	. venv/bin/activate; $(PYTHONEXEC) src/models/corr_0725/__init__.py
+
 lint:
 	. venv/bin/activate; pip install flake8==3.3.0
 	. venv/bin/activate; $(PYTHONEXEC) -m flake8 --ignore=F401,E501,E731 src/

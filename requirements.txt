@@ -2,8 +2,9 @@
 
 enigma-catalyst==0.5.17
 ipython==6.4.0
-pandas==0.23.3
+lore
 openpyxl==2.5.4
+pandas==0.23.3
 scipy==1.1.0
 
 dotmap==1.2.20

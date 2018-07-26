@@ -26,7 +26,7 @@ def Logger(config, handler=None, level=None):
     # Clear any hanging/zombie handlers
     log.handlers = []
 
-    defaultHandler.setFormatter(logging.Formatter('%(asctime)s %(filename)s %(name)s %(levelname)s %(message)s'))
+    defaultHandler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s %(message)s'))
     log.addHandler(defaultHandler)
 
     return log

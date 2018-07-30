@@ -11,16 +11,16 @@ if __name__ == '__main__':
 
     # Define a schema for the process function
     model = Model(period=[2018, 2017, 2016, 2015, 2014, 2013], entities=[
-        {'slug': 'bitcoin', 'symbol': 'btc'},
-        {'slug': 'ethereum', 'symbol': 'eth'},
-        {'slug': 'litecoin', 'symbol': 'ltc'},
-        {'slug': 'monero', 'symbol': 'xmr'},
+        {'slug': 'bitcoin',         'symbol': 'btc',  'algo': 'sha-256'},
+        {'slug': 'ethereum',        'symbol': 'eth',  'algo': 'dagger-hashimoto'},
+        {'slug': 'litecoin',        'symbol': 'ltc',  'algo': 'scrypt'},
+        {'slug': 'monero',          'symbol': 'xmr',  'algo': 'cryptonight'},
 
-        {'slug': 'bitcoin-diamond', 'symbol': 'bcd'},
-        {'slug': 'bitcoin-gold', 'symbol': 'bcg'},
-        {'slug': 'dash', 'symbol': 'dash'},
-        {'slug': 'marijuanacoin', 'symbol': 'mar'},
-        {'slug': 'zcash', 'symbol': 'zec'},
+        {'slug': 'bitcoin-diamond', 'symbol': 'bcd',  'algo': 'X13'},
+        {'slug': 'bitcoin-gold',    'symbol': 'bcg',  'algo': 'equihash'},
+        {'slug': 'zcash',           'symbol': 'zec',  'algo': 'equihash'},
+        {'slug': 'dash',            'symbol': 'dash', 'algo': 'X11'},
+        {'slug': 'marijuanacoin',   'symbol': 'mar',  'algo': 'X11'},
     ])
 
     Pipeline(config, sqlite, model).process()

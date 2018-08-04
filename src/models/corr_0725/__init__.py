@@ -17,10 +17,11 @@ if __name__ == '__main__':
         {'slug': 'monero',          'symbol': 'xmr',  'algo': 'cryptonight'},
 
         {'slug': 'bitcoin-diamond', 'symbol': 'bcd',  'algo': 'X13'},
-        {'slug': 'bitcoin-gold',    'symbol': 'bcg',  'algo': 'equihash'},
-        {'slug': 'zcash',           'symbol': 'zec',  'algo': 'equihash'},
         {'slug': 'dash',            'symbol': 'dash', 'algo': 'X11'},
         {'slug': 'marijuanacoin',   'symbol': 'mar',  'algo': 'X11'},
+        {'slug': 'bitcoin-gold',    'symbol': 'bcg',  'algo': 'equihash'},
+        {'slug': 'bitcoin-private', 'symbol': 'BTCP', 'algo': 'equihash'},
+        {'slug': 'zcash',           'symbol': 'zec',  'algo': 'equihash'},
     ])
 
     Pipeline(config, sqlite, model).process()

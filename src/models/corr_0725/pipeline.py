@@ -9,6 +9,7 @@ from scipy import stats as scy
 from src.models import Base
 from src.utilities import Helper
 
+
 class Pipeline(Base):
     def __init__(self, config, connection, model):
         super(Pipeline, self).__init__(config, connection, model)

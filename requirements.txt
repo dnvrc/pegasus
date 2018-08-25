@@ -1,5 +1,10 @@
 # Main
 
+cvxopt
+mpld3
+seaborn
+
+beautifulsoup4==4.6.3
 enigma-catalyst==0.5.17
 ipython==6.4.0
 lore

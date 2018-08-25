@@ -10,6 +10,9 @@ bandit:
 	. venv/bin/activate; pip install bandit==1.0.1
 	. venv/bin/activate; bandit -r src/
 
+bitinfocharts:
+	. venv/bin/activate; $(PYTHONEXEC) src/api/bitinfochart/__init__.py
+
 clean:
 	rm .coverage || true
 	rm -rf .cache
@@ -31,6 +34,10 @@ console:
 
 corr_0725:
 	. venv/bin/activate; $(PYTHONEXEC) src/models/corr_0725/__init__.py
+
+corr_0725_r:
+	python setup.py build install
+	python src/models/corr_0725/__init__.py
 
 coverage:
 	. venv/bin/activate; coverage run --source src setup.py test

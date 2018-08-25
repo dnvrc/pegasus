@@ -11,20 +11,21 @@ if __name__ == '__main__':
     sqlite = sq3.connect('/Users/alexmanelis/Development/Python/coinmarketcap-scraper/database.db')
 
     # Define a schema for the process function
-    model = Model(period=[2018, 2017, 2016, 2015, 2014, 2013, 2012], entities=[
+    model = Model(period=[2018], entities=[
         {'slug': 'bitcoin',             'symbol': 'btc',  'algo': 'sha-256'},
         {'slug': 'bitcoin-cash',        'symbol': 'bch',  'algo': 'sha-256'},
-        {'slug': 'ethereum',            'symbol': 'eth',  'algo': 'dagger-hashimoto'},
-        {'slug': 'ethereum-classic',    'symbol': 'etc',  'algo': 'dagger-hashimoto'},
-        {'slug': 'litecoin',            'symbol': 'ltc',  'algo': 'scrypt'},
-        {'slug': 'dogecoin',            'symbol': 'doge', 'algo': 'scrypt'},
-        {'slug': 'monero',              'symbol': 'xmr',  'algo': 'cryptonight'},
-
         {'slug': 'bitcoin-diamond',     'symbol': 'bcd',  'algo': 'X13'},
-        {'slug': 'dash',                'symbol': 'dash', 'algo': 'X11'},
-        {'slug': 'marijuanacoin',       'symbol': 'mar',  'algo': 'X11'},
         {'slug': 'bitcoin-gold',        'symbol': 'bcg',  'algo': 'equihash'},
         {'slug': 'bitcoin-private',     'symbol': 'btcp', 'algo': 'equihash'},
+        {'slug': 'dash',                'symbol': 'dash', 'algo': 'X11'},
+        {'slug': 'dogecoin',            'symbol': 'doge', 'algo': 'scrypt'},
+        {'slug': 'electroneum',         'symbol': 'etn',  'algo': 'cryptonight'},
+        {'slug': 'ethereum',            'symbol': 'eth',  'algo': 'ethash'},
+        {'slug': 'ethereum-classic',    'symbol': 'etc',  'algo': 'ethash'},
+        {'slug': 'litecoin',            'symbol': 'ltc',  'algo': 'scrypt'},
+        {'slug': 'galactrum',           'symbol': 'ore',  'algo': 'lyra2rev2'},
+        {'slug': 'monero',              'symbol': 'xmr',  'algo': 'cryptonight'},
+        {'slug': 'ravencoin',           'symbol': 'rvn',  'algo': 'X16R'},
         {'slug': 'zcash',               'symbol': 'zec',  'algo': 'equihash'},
     ])
 

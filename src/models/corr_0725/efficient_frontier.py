@@ -1,14 +1,15 @@
 import matplotlib.pyplot as plt
 import mpld3
-from mpld3 import plugins
 
 import numpy as np
 import cvxopt as opt
 import pandas as pd
 
 from cvxopt import blas, solvers
+from mpld3 import plugins
 
 from IPython import embed
+
 
 # Turn off progress printing
 solvers.options['show_progress'] = False
@@ -109,19 +110,17 @@ def covmean_portfolio(covariances, mean_returns):
     N = 100
     mus = [10**(5.0 * t/N - 1.0) for t in range(N)]
 
-    S = opt.matrix(covariances.as_matrix())  # how to convert array to matrix?
-
-    pbar = opt.matrix(mean_returns)  # how to convert array to matrix?
+    S = opt.matrix(covariances.values)
+    pbar = opt.matrix(mean_returns)
 
     # Create constraint matrices
-    G = -opt.matrix(np.eye(n))   # negative n x n identity matrix
+    G = -opt.matrix(np.eye(n))
     h = opt.matrix(0.0, (n ,1))
     A = opt.matrix(1.0, (1, n))
     b = opt.matrix(1.0)
 
     # Calculate efficient frontier weights using quadratic programming
-    portfolios = [solvers.qp(mu*S, -pbar, G, h, A, b)['x']
-                  for mu in mus]
+    portfolios = [solvers.qp(mu*S, -pbar, G, h, A, b)['x'] for mu in mus]
     port_list = convert_portfolios(portfolios)
 
     ## CALCULATE RISKS AND RETURNS FOR FRONTIER
@@ -130,8 +129,8 @@ def covmean_portfolio(covariances, mean_returns):
 
     ## CALCULATE THE 2ND DEGREE POLYNOMIAL OF THE FRONTIER CURVE
     m1 = np.polyfit(frontier_returns, risks, 2)
-    #print m1 # result: [ 159.38531535   -3.32476303    0.4910851 ]
     x1 = np.sqrt(m1[2] / m1[0])
+
     # CALCULATE THE OPTIMAL PORTFOLIO
     wt = solvers.qp(opt.matrix(x1 * S), -pbar, G, h, A, b)['x']
 

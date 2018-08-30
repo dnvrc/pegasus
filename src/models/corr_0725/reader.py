@@ -59,44 +59,41 @@ class Reader(Base):
             mean_returns.append(np.average(psd.pct_change().dropna()))
             total_frames = total_frames.append(frm.dropna())
 
-        # main_data_frame = pd.DataFrame(data=frame)
-        # correlations = main_data_frame.corr()
-        # covariances = main_data_frame.cov()
-        #
-        # weights, returns, risks, portfolios = covmean_portfolio(covariances, mean_returns)
-        #
-        # pd_weights = pd.DataFrame(data=weights)
-        # pd_weights = pd_weights.rename(index=main_coin_dt, columns={0: 'Weights'})
-        #
-        # pd_returns = pd.DataFrame(data=returns)
-        # pd_returns = pd_returns.rename(columns={0: 'Returns'})
-        #
-        # pd_risks = pd.DataFrame(data=risks)
-        # pd_risks = pd_risks.rename(columns={0: 'Risks'})
-        #
-        # pd_portfolios = pd.DataFrame(data=portfolios)
-        # pd_portfolios = pd_portfolios.rename(columns=main_coin_dt)
-        #
-        # pd_weights.to_excel(wr, sheet_name='Weights')
-        # pd_returns.to_excel(wr, sheet_name='Returns')
-        # pd_risks.to_excel(wr, sheet_name='Risks')
-        # pd_portfolios.to_excel(wr, sheet_name='Portfolios')
-        #
-        # correlations.to_excel(wr, sheet_name='Correlations')
-        # covariances.to_excel(wr, sheet_name='Covariances')
+        main_data_frame = pd.DataFrame(data=frame)
+        correlations = main_data_frame.corr()
+        covariances = main_data_frame.cov()
 
-        # sns.lmplot(x='Risk', y='Return', data=pd_portfolios)
-        # sns.boxplot(data=pd_risks)
-        # sns.set_style('whitegrid')
-        # sns.violinplot(x='Type 1', y='Attack', data=pd_portfolios)
-        # plt.show()
+        weights, returns, risks, portfolios = covmean_portfolio(covariances, mean_returns)
+
+        # Main graph
         #
         # plt.style.use('seaborn')
         # plt.ylabel('Return')
         # plt.xlabel('Risk')
         # plt.plot(risks, returns, 'y-o')
         # plt.show()
-        total_frames.to_excel(wr, sheet_name=f'Coins {beg}-{end}')
+
+        correlations.to_excel(wr, sheet_name='Correlations')
+        covariances.to_excel(wr, sheet_name='Covariances')
+
+        pd_weights = pd.DataFrame(data=weights)
+        pd_weights = pd_weights.rename(index=main_coin_dt, columns={0: 'Weights'})
+
+        pd_returns = pd.DataFrame(data=returns)
+        pd_returns = pd_returns.rename(columns={0: 'Returns'})
+
+        pd_risks = pd.DataFrame(data=risks)
+        pd_risks = pd_risks.rename(columns={0: 'Risks'})
+
+        pd_portfolios = pd.DataFrame(data=portfolios)
+        pd_portfolios = pd_portfolios.rename(columns=main_coin_dt)
+
+        # total_frames.to_excel(wr, sheet_name=f'Coins {beg}-{end}')
+
+        pd_weights.to_excel(wr, sheet_name='Weights')
+        pd_returns.to_excel(wr, sheet_name='Returns')
+        pd_risks.to_excel(wr, sheet_name='Risks')
+        pd_portfolios.to_excel(wr, sheet_name='Portfolios')
         wr.save()
 
         self.config.logger.info('Completed processing')

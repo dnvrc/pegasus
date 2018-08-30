@@ -53,6 +53,29 @@ docker_install: clean
 install: clean venv deps
 	. venv/bin/activate; $(PYTHONEXEC) setup.py install
 
+# DB Migration tasks -----------------------------------------------------------
+current:
+	alembic current
+
+history:
+	alembic history --verbose
+
+migrate:
+	alembic upgrade head
+
+reset:
+	alembic downgrade base
+
+upgrade:
+	alembic upgrade +1
+
+rollback:
+	alembic downgrade -1
+
+schema:
+	alembic upgrade head --sql > ./alembic/schema.sql
+# DB Migration tasks -----------------------------------------------------------
+
 lint:
 	. venv/bin/activate; pip install flake8==3.3.0
 	. venv/bin/activate; $(PYTHONEXEC) -m flake8 --ignore=F401,E501,E731 src/

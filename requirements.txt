@@ -1,5 +1,11 @@
 # Main
 
+alembic==1.0.0
+eralchemy==1.2.10
+mysql-connector==2.1.6
+pymysql==0.9.1
+SQLAlchemy==1.2.10
+
 cvxopt
 mpld3
 seaborn

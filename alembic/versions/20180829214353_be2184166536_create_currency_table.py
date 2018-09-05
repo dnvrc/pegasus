@@ -20,7 +20,7 @@ def upgrade():
         op.get_bind().execute(
             """
             CREATE TABLE `currencies` (
-                `id` integer NOT NULL,
+                `id` integer NOT NULL AUTO_INCREMENT,
                 `name` varchar(50) DEFAULT NULL,
                 `type` varchar(50) DEFAULT NULL,
                 `rank` integer(12) DEFAULT NULL,

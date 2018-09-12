@@ -23,7 +23,6 @@ def upgrade():
                 `id` integer NOT NULL AUTO_INCREMENT,
                 `name` varchar(50) DEFAULT NULL,
                 `type` varchar(50) DEFAULT NULL,
-                `rank` integer(12) DEFAULT NULL,
                 `slug` varchar(50) DEFAULT NULL,
             PRIMARY KEY (`id`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

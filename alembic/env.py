@@ -3,22 +3,16 @@ from alembic import context
 from sqlalchemy import engine_from_config, pool, create_engine
 from logging.config import fileConfig
 
-from cybric.environments import Environments as E
-
 import os
 
 
 def database_connection_string():
-    envs = os.getenv('ENVIRONMENT', E.local)
     conn = {
-        'db_host': os.getenv('MYSQL_HOST', None),
-        'db_user': os.getenv('MYSQL_USER', None),
-        'db_pass': os.getenv('MYSQL_PASS', None),
-        'db_name': os.getenv('MYSQL_NAME', None),
+        'db_host': os.getenv('MYSQL_HOST', '127.0.0.1'),
+        'db_user': os.getenv('MYSQL_USER', 'root'),
+        'db_pass': os.getenv('MYSQL_PASS', 'password'),
+        'db_name': os.getenv('MYSQL_NAME', 'pegasus'),
     }
-
-    if envs != E.local and None in list(conn.values()):
-        raise Exception('missing or empty MYSQL environment variables have been passed.')
 
     if conn['db_pass'] is None:
         return 'mysql+pymysql://{0}@{1}/{2}'.format(conn['db_user'], conn['db_host'], conn['db_name'])

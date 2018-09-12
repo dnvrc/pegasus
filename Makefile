@@ -3,14 +3,14 @@
 VIRTUALENV = $(shell which virtualenv)
 PYTHONEXEC = $(shell which python3.6)
 DOCKER_VOL = '/var/run/docker.sock:/var/run/docker.sock'
-PIMAGENAME = 'amanelis/crypto-anaylze:public'
-DIMAGENAME = 'amanelis/crypto-anaylze:latest'
+PIMAGENAME = 'dnvrc/pegasus:public'
+DIMAGENAME = 'dnvrc/pegasus:latest'
 
 bandit:
 	. venv/bin/activate; pip install bandit==1.0.1
 	. venv/bin/activate; bandit -r src/
 
-bitinfocharts:
+bitinfocharts: compile
 	. venv/bin/activate; $(PYTHONEXEC) src/api/bitinfochart/__init__.py
 
 clean:
@@ -32,7 +32,7 @@ compile:
 console:
 	. venv/bin/activate; $(PYTHONEXEC)
 
-corr_0725:
+corr_0725: compile
 	. venv/bin/activate; $(PYTHONEXEC) src/models/corr_0725/__init__.py
 
 corr_0725_r:
@@ -46,9 +46,6 @@ coverage:
 
 deps:
 	. venv/bin/activate; $(PYTHONEXEC) -m pip install -r requirements.txt
-
-docker_install: clean
-	python setup.py install
 
 install: clean venv deps
 	. venv/bin/activate; $(PYTHONEXEC) setup.py install

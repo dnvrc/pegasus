@@ -6,7 +6,7 @@ import pandas as pd
 from src.api.base import APIBase
 
 
-class QuandlAPI(APIBase):
+class QuandlAPI(APIBase):    
     def get_exchange_data(self, exchanges=['COINBASE','BITSTAMP','ITBIT', 'KRAKEN']):
         exchange_data = {}
 

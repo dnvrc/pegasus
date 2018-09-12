@@ -81,7 +81,7 @@ def parse_record(record) -> dict:
 if __name__ == '__main__':
     requests_cache.install_cache()
 
-    quandl.ApiConfig.api_key = os.getenv('QUANDL_API_KEY', 'Tc8fGc1VkVpvpexgQ7AY')
+    quandl.ApiConfig.api_key = os.getenv('QUANDL_API_KEY', None)
 
     not_persisted = []
 

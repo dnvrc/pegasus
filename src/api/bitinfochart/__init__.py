@@ -122,7 +122,9 @@ if __name__ == '__main__':
 
         for date in list(symf.keys()):
             raw_entry = symf[date]
-            share_mdl = Share.Model(**raw_entry)
+            share_mdl = Share.Model(**raw_entry, currency_id=currency_model.id,
+                                                 currency_slug=currency_model.slug,
+                                                 date=date)
 
             if share_mdl.network_hashrate == None or share_mdl.network_hashrate == '' or share_mdl.network_hashrate == 'null':
                 date_index = date.split('T')[0]
@@ -130,14 +132,7 @@ if __name__ == '__main__':
                 if hrate is not None and hrate.index.isin([date_index]).any():
                     share_mdl.network_hashrate = round(Decimal(hrate.loc[date_index].Value), 2)
 
-            share_mdl.currency_id = currency_model.id
-            share_mdl.currency_slug = currency_model.slug
-            share_mdl.date = date
-
             not_persisted.append(share_mdl)
-
-        #     session.add(share_mdl)
-        # session.commit()
 
         session.bulk_save_objects(not_persisted)
         session.commit()

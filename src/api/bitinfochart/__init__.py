@@ -36,7 +36,7 @@ currencies = [
     {'key': 'ada'},
     {'key': 'xlm'},
     {'key': 'zec'},
-    {'key': 'iot'},
+    # {'key': 'iot'},
 ]
 
 methods = [

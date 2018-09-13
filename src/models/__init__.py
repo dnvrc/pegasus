@@ -1,5 +1,6 @@
 import dotmap
 
+
 class Base(object):
     def __init__(self, config, connection, model):
         self.config = config
@@ -10,7 +11,6 @@ class Base(object):
         print('')
         print(data)
         print('')
-
 
 
 class Model(dotmap.DotMap):

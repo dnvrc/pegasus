@@ -14,7 +14,6 @@ from IPython import embed
 # Turn off progress printing
 solvers.options['show_progress'] = False
 
-
 def rand_weights(n):
     ''' Produces n random weights that sum to 1 '''
     k = np.random.rand(n)

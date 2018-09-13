@@ -67,11 +67,13 @@ class Reader(Base):
 
         # Main graph
         #
-        # plt.style.use('seaborn')
-        # plt.ylabel('Return')
-        # plt.xlabel('Risk')
-        # plt.plot(risks, returns, 'y-o')
-        # plt.show()
+        plt.style.use('seaborn')
+        plt.xlabel('Volatility (Std. Deviation)')
+        plt.ylabel('Expected Return')
+        plt.plot(risks, returns, 'y-o')
+        plt.title('Efficient Frontier')
+        plt.show()
+        return
 
         correlations.to_excel(wr, sheet_name='Correlations')
         covariances.to_excel(wr, sheet_name='Covariances')

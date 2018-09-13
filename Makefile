@@ -37,7 +37,8 @@ corr_0725: compile
 
 corr_0725_r:
 	python setup.py build install
-	python src/models/corr_0725/__init__.py
+	python src/models/corr_0725/markowitz.py
+	# python src/models/corr_0725/__init__.py
 
 coverage:
 	. venv/bin/activate; coverage run --source src setup.py test

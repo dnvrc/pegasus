@@ -9,6 +9,9 @@ SQLAlchemy==1.2.10
 cvxopt
 mpld3
 seaborn
+graphviz
+tensorflow
+pyspark
 
 beautifulsoup4==4.6.3
 enigma-catalyst==0.5.17

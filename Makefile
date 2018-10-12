@@ -48,6 +48,14 @@ coverage:
 deps:
 	. venv/bin/activate; $(PYTHONEXEC) -m pip install -r requirements.txt
 
+docker_build:
+	docker build -t pegasus:latest .
+
+docker_install:
+	pip3 install graphviz
+	python3 -m pip install -r requirements.txt
+	python3 setup.py install
+
 install: clean venv deps
 	. venv/bin/activate; $(PYTHONEXEC) setup.py install
 

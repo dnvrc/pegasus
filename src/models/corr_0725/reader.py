@@ -67,13 +67,13 @@ class Reader(Base):
 
         # Main graph
         #
-        plt.style.use('seaborn')
-        plt.xlabel('Volatility (Std. Deviation)')
-        plt.ylabel('Expected Return')
-        plt.plot(risks, returns, 'y-o')
-        plt.title('Efficient Frontier')
-        plt.show()
-        return
+        # plt.style.use('seaborn')
+        # plt.xlabel('Volatility (Std. Deviation)')
+        # plt.ylabel('Expected Return')
+        # plt.plot(risks, returns, 'y-o')
+        # plt.title('Efficient Frontier')
+        # plt.show()
+        # return
 
         correlations.to_excel(wr, sheet_name='Correlations')
         covariances.to_excel(wr, sheet_name='Covariances')
@@ -90,7 +90,7 @@ class Reader(Base):
         pd_portfolios = pd.DataFrame(data=portfolios)
         pd_portfolios = pd_portfolios.rename(columns=main_coin_dt)
 
-        # total_frames.to_excel(wr, sheet_name=f'Coins {beg}-{end}')
+        total_frames.to_excel(wr, sheet_name=f'Coins {beg}-{end}')
 
         pd_weights.to_excel(wr, sheet_name='Weights')
         pd_returns.to_excel(wr, sheet_name='Returns')
